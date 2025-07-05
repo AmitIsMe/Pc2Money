@@ -18,12 +18,15 @@ Pc2Money is a simple, no-nonsense tool designed to help **technophobic users** f
 
 ## 📂 Project Structure
 
+```
+pc2dollar
 ├── pc2dollar.EXE # English version (USD)
 ├── pc2dollar.ps1 # PowerShell script source
 ├── pc2dollar.SED # IExpress configuration
 ├── pc2shekel.EXE # Hebrew/ILS version
 ├── pc2shekel.ps1 # PowerShell script source
-├── pc2shekel.SED # IExpress configuration
+└── pc2shekel.SED # IExpress configuration
+```
 
 ---
 
@@ -32,11 +35,12 @@ Pc2Money is a simple, no-nonsense tool designed to help **technophobic users** f
 > No installation required!
 
 1. Download the `Pc2Money` folder or just one of the `.EXE` files:
+
    - `pc2dollar.EXE` - for English/US-based sellers
    - `pc2shekel.EXE` - for Hebrew/Israeli sellers
 
 2. **(Optional)** You may need to temporarily disable your antivirus to allow the `.exe` to run.  
-   *(You can inspect the source in the `.ps1` file for transparency.)*
+   _(You can inspect the source in the `.ps1` file for transparency.)_
 
 ---
 
@@ -75,6 +79,7 @@ Instructions: Always write the output in fluent, natural-sounding Hebrew appropr
 ## 🤝 Contributing
 
 Pull requests are welcome! If you'd like to improve functionality, translations, or packaging:
+
 1. Fork the repo
 2. Make your changes
 3. Submit a PR with a clear explanation
