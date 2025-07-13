@@ -24,14 +24,14 @@ SourceFiles=SourceFiles
 InstallPrompt=
 DisplayLicense=
 FinishMessage=
-TargetName=E:\download\SysToBuildInfo\pc2shekel.EXE
+TargetName=E:\download\Pc2Money\pc2shekel.EXE
 FriendlyName=pc2shekel
-AppLaunched=powershell.exe -ExecutionPolicy Bypass -File pc2shekel.ps1
+AppLaunched=powershell.exe -ExecutionPolicy Bypass -File pc2shekel.ps1 
 PostInstallCmd=<None>
 AdminQuietInstCmd=
 UserQuietInstCmd=
 FILE0="pc2shekel.ps1"
 [SourceFiles]
-SourceFiles0=E:\download\SysToBuildInfo\
+SourceFiles0=E:\download\Pc2Money\
 [SourceFiles0]
 %FILE0%=

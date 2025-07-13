@@ -18,9 +18,12 @@ $gpus = Get-CimInstance Win32_VideoController |
 
 $ram = [Math]::Round($computerSystem.TotalPhysicalMemory / 1GB, 2)
 $storageDevices = Get-CimInstance -ClassName Win32_DiskDrive
+$os = Get-CimInstance -ClassName Win32_OperatingSystem  # <--- Add this line
 
 # Format the output
 $output = @()
+$output += "$($os.Caption.Trim()) (Version $($os.Version)) :מערכת הפעלה •
+" 
 $output += "$($computerSystem.Manufacturer), $($computerSystem.Model) :מודל ולוח אם •"
 $output += "
 $($processor.Name.Trim()) :מעבד •"
@@ -30,7 +33,7 @@ $output += "
 :כרטיס/י מסך •"
 $output += $gpus | ForEach-Object {
     $gpu = $_.Name.Trim()
-      "  - $gpu"
+        "  - $gpu"
 }
 $output += "
 אחסון •"
@@ -42,7 +45,6 @@ $output += $storageDevices | ForEach-Object {
 
 # Write to file
 $output | Out-File -FilePath $outputFile -Encoding Unicode
-
 
 # Notify user
 Write-Host "System information saved to: $outputFile"

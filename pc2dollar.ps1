@@ -17,24 +17,25 @@ $gpus = Get-CimInstance Win32_VideoController |
     Where-Object { $_.Name -notmatch 'basic|usb|virtual|mirage|microsoft' }
 $ram = [Math]::Round($computerSystem.TotalPhysicalMemory / 1GB, 2)
 $storageDevices = Get-CimInstance -ClassName Win32_DiskDrive
+$os = Get-CimInstance -ClassName Win32_OperatingSystem
 
 # Format the output
 $output = @()
-$output += "• Model and Motherboard: $($computerSystem.Manufacturer), $($computerSystem.Model)
+$output += "OS version: $($os.Caption.Trim()) (Version $($os.Version))
 "
-$output += "• Processor: $($processor.Name.Trim())
+$output += "Model and Motherboard: $($computerSystem.Manufacturer), $($computerSystem.Model)
 "
-$output += "• Graphics: $($graphics.Name.Trim())
+$output += "Processor: $($processor.Name.Trim())
 "
-$output += "• RAM: ${ram} GB
+$output += "RAM: ${ram} GB
 "
-$output += "• Graphic card/s:"
+$output += "Graphic card/s:"
 $output += $gpus | ForEach-Object {
     $gpu = $_.Name.Trim()
-      "  - $gpu"
+        "  - $gpu"
 }
 $output += "
-• Storage:"
+Storage:"
 $output += $storageDevices | ForEach-Object {
     $model = $_.Model.Trim()
     $sizeGB = [Math]::Round($_.Size / 1GB, 2)
@@ -42,7 +43,7 @@ $output += $storageDevices | ForEach-Object {
 }
 
 # Write to file
-$output | Out-File -FilePath $outputFile -Encoding UTF8
+$output | Out-File -FilePath $outputFile -Encoding Unicode
 
 # Notify user
 Write-Host "System information saved to: $outputFile"
