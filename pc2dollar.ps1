@@ -23,15 +23,15 @@ $os = Get-CimInstance -ClassName Win32_OperatingSystem
 
 # Format the output
 $output = @()
-$output += "$($os.Caption.Trim()) (Version $($os.Version)) :OS version •
-" 
-$output += "$($computerSystem.Manufacturer), $($computerSystem.Model) :Model and Motherboard •"
+$output += "OS version: $($os.Caption.Trim()) (Version $($os.Version))" 
+$output += "
+Model and Motherboard: $($computerSystem.Manufacturer), $($computerSystem.Model)"
 
 $output += "
-$($processor.Name.Trim()) :Processor •"
+Processor:$($processor.Name.Trim())"
 
 $output += "
-:RAM •"
+RAM:"
 
 if ($memModules) {
     $totalCapBytes = 0
@@ -56,13 +56,13 @@ if ($memModules) {
 }
 
 $output += "
-:Graphic card/s •"
+Graphic card/s: "
 $output += $gpus | ForEach-Object {
     $gpu = $_.Name.Trim()
         "  - $gpu"
 }
 $output += "
-Storage: •"
+Storage:"
 $output += $storageDevices | ForEach-Object {
     $model = $_.Model.Trim()
     $sizeGB = [Math]::Round($_.Size / 1GB, 2)
